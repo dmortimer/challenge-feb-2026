@@ -8,8 +8,8 @@ export const LoginSchema = z.object({
 export const PasswordSchema = z
   .object({
     oldPassword: z.string().min(1, 'Old Password is required'),
-    newPassword: z.string().min(1, 'New Password is required'),
-    confirmPassword: z.string().min(1, 'Confirm Password is required')
+    newPassword: z.string().min(6, 'New Password must be at least 6 characters'),
+    confirmPassword: z.string().min(6, 'Confirm Password must be at least 6 characters')
   })
   .refine((data) => data.newPassword === data.confirmPassword, {
     path: ['confirmPassword'],
